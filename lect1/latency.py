@@ -8,7 +8,7 @@ Sample output:
 2. xx-xxxx-x [xx.xx.xx.xx] - x
 3. xx-xxxx-x [xx.xx.xx.xx] - x
 ...
-15. xx-xxxx-x [xx.xx.xx.xx] - Smallest average latency
+15. xx-xxxx-x [xx.xx.xx.xx] - Largest average latency
 """
 import subprocess
 
