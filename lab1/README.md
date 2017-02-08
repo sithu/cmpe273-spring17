@@ -5,10 +5,12 @@
 psutil (python system and process utilities) is a cross-platform library for retrieving information on running processes and system utilization (CPU, memory, disks, network) in Python. 
 
 
-### Requirement
+### Requirements
 
 * Use [psutil](https://pythonhosted.org/psutil/) and implement a network socket monitoring tool that can check how many TCP sockets are being created by a web application.
 * Create a Python script called _socket-mon.py_.
+* List all processes that have any socket connections (meaning the laddr and raddr fields exist).
+* Group by the PID and sort the output by the number of the connections per process.
 
 #### Expected Output in CSV format
 
