@@ -10,5 +10,5 @@ You will be building a Raspberry Pi App Deployer for deploying any Python app th
 Example
 
 ```sh
-deployer 124.3.4.5 https://github.com/xxxx/app
+deployer.py 124.3.4.5:5000 https://github.com/xxxx/app
 ```
