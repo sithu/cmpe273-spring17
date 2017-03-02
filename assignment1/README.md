@@ -1,7 +1,6 @@
 #### Goal
 
-The purpose of this lab is to setup a [Docker enviroment](https://www.youtube.com/watch?v=pGYAg7TMmp0) on your machine that you will be using for this CMPE-273 class and to give you 
-an introduction to the [Flask](http://flask.pocoo.org/) micro webservice-framework for Python.
+The purpose of this assignment is to build a simple [Flask](http://flask.pocoo.org/)  application which reads its configration data from a Github repo. Second, you will learn how to dockerize your application.
 
 #### Pre-requisites
 * Install [Visual Studio Code](https://code.visualstudio.com/) with [Python extension](https://code.visualstudio.com/docs/languages/python).
