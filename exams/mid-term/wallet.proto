@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+message Card {
+  string card_holder_name = 1;
+  string card_number = 2;
+  int32 card_expiry_yyyymm = 3;
+}
+
+message CardEncryptRequest {
+    Card card = 1;
+}
+
+message CardEncryptResponse {
+    string token = 1;
+}
+
+message CardDecryptRequest {
+    string token = 1;
+}
+
+message CardDecryptResponse {
+    string card_in_plain_text = 1;
+}
+
+service Wallet {
+    rpc encrypt(CardEncryptRequest) returns (CardEncryptResponse) {}
+    rpc decrypt(CardDecryptRequest) returns (CardDecryptResponse) {}
+}
