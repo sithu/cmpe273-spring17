@@ -18,7 +18,8 @@ class WalletClient(object):
         Initializes GRPC channel and stud so that they can be used in encrypt and decrypt functions.
         '''
         # TODO
-
+        self.channel = grpc.insecure_channel('%s:%d' % (host, port))
+        self.stub = wallet_pb2.WalletStub(self.channel)
 
     def encrypt(self, plain_text):
         '''
@@ -30,7 +31,13 @@ class WalletClient(object):
         :rtype: wallet_pb2.CardEncryptResponse
         '''
         # TODO
-
+        wcard = wallet_pb2.Card(
+            card_holder_name=plain_text['card_holder_name'],
+            card_number=plain_text['card_number'],
+            card_expiry_yyyymm=plain_text['card_expiry_yyyymm']
+        )
+        req = wallet_pb2.CardEncryptRequest(card=wcard)
+        return self.stub.encrypt(req)
 
     def decrypt(self, _token):
         '''
@@ -41,3 +48,5 @@ class WalletClient(object):
         :rtype: wallet_pb2.CardDecryptResponse
         '''
         # TODO
+        req = wallet_pb2.CardDecryptRequest(token=_token)
+        return self.stub.decrypt(req)

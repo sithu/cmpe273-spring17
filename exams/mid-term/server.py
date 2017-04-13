@@ -28,7 +28,9 @@ class WalletServicer(wallet_pb2.WalletServicer):
         Initializes Ferent instance and saves it into another instance variable.
         '''
         # TODO
-
+        self.key = Fernet.generate_key()
+        print "Encryption key=%s" % self.key
+        self.fernet = Fernet(self.key)
 
     def encrypt(self, request, context):
         '''
@@ -40,7 +42,9 @@ class WalletServicer(wallet_pb2.WalletServicer):
         :rtype: wallet_pb2.CardEncryptResponse
         '''
         # TODO
-
+        print "Encrypting the card detail...\n", request.card
+        _token = self.fernet.encrypt(bytes(request.card))
+        return wallet_pb2.CardEncryptResponse(token=_token)
 
     def decrypt(self, request, context):
         '''
@@ -52,6 +56,9 @@ class WalletServicer(wallet_pb2.WalletServicer):
         :rtype: wallet_pb2.CardDecryptResponse
         '''
         # TODO
+        print "Decrypting the card token=%s" % request.token
+        plain_text = self.fernet.decrypt(bytes(request.token))
+        return wallet_pb2.CardDecryptResponse(card_in_plain_text=plain_text)
 
 
 def run(host, port):
