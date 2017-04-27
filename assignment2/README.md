@@ -67,6 +67,10 @@ _Response_
     "size": {
         "Slide", "Small", "Medium", "Large", "X-Large"
     },
+    "sequence": {
+        "selection",
+        "size"
+    },
     "price": {
         "3.50", "7.00", "10.00", "15.00", "20.00"
     },
@@ -117,6 +121,7 @@ _Request_
 
 ```sh
 {   
+    "menu_id": "xxxxxxxx",
     "order_id": "uuid_generated_by_client",
     "customer_name": "John Smith",
     "customer_email": "foobar@gmail.com"
@@ -172,5 +177,24 @@ _Response_
     "Message": "Your order costs $15.00. We will email you when the order is ready. Thank you!"
 }
 
+3. GET /order/{order-id}
+
+_Request_
+
+```sh
+{   
+    "menu_id": "xxxxxxxx",
+    "order_id": "uuid_generated_by_client",
+    "customer_name": "John Smith",
+    "customer_email": "foobar@gmail.com"
+    "order_status": "processing"
+    "order": {
+        "selection": "Cheese",
+        "size": "Large",
+        "costs": "15.00",
+        "order_time": "mm-dd-yyyy@hh:mm:ss"
+    }
+}
+```
 
 
