@@ -1,0 +1,15 @@
+region: us-west-2
+
+function_name: hello_lambda_function
+handler: service.handler
+role: pizzashop-role
+description: My Hello World lambda function
+
+# if access key and secret are left blank, boto will use the credentials
+# defined in the [default] section of ~/.aws/credentials.
+aws_access_key_id: AKIAJM7MWSKVZZZJDMDA
+aws_secret_access_key: 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
+
+# dist_directory: dist
+# timeout: 15
+# memory_size: 512

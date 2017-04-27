@@ -1,0 +1,53 @@
+#!/Users/saung/mydoc/sjsu/cmpe273-spring17/assignment2/pizzshopenv/bin/python2.7
+# -*- coding: utf-8 -*-
+import os
+import click
+import aws_lambda
+import logging
+
+CURRENT_DIR = os.getcwd()
+
+logging.getLogger('pip').setLevel(logging.CRITICAL)
+
+
+@click.group()
+def cli():
+    pass
+
+
+@click.command(help="Create a new function for Lambda.")
+def init():
+    aws_lambda.init(CURRENT_DIR)
+
+
+@click.command(help="Bundles package for deployment.")
+@click.option('--local-package', default=None, help='Install local package as well.', type=click.Path())
+def build(local_package):
+    aws_lambda.build(CURRENT_DIR, local_package)
+
+
+@click.command(help="Run a local test of your function.")
+@click.option('--event-file', default=None, help='Alternate event file.')
+@click.option('--verbose', '-v', is_flag=True)
+def invoke(event_file, verbose):
+    aws_lambda.invoke(CURRENT_DIR, event_file, verbose)
+
+
+@click.command(help="Register and deploy your code to lambda.")
+@click.option('--local-package', default=None, help='Install local package as well.', type=click.Path())
+def deploy(local_package):
+    aws_lambda.deploy(CURRENT_DIR, local_package)
+
+
+@click.command(help="Delete old versions of your functions")
+@click.option("--keep-last", type=int, prompt="Please enter the number of recent versions to keep")
+def cleanup(keep_last):
+    aws_lambda.cleanup_old_versions(CURRENT_DIR, keep_last)
+
+if __name__ == '__main__':
+    cli.add_command(init)
+    cli.add_command(invoke)
+    cli.add_command(deploy)
+    cli.add_command(build)
+    cli.add_command(cleanup)
+    cli()
