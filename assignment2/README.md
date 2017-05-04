@@ -16,16 +16,16 @@ _Request_
 {
     "menu_id": "UUID-generated-by-client",
     "store_name": "Pizza Hut",
-    "selection": { 
+    "selection": [
         "Cheese",
-        "Pepperoni",
-    },
-    "size": {
+        "Pepperoni"
+    ],
+    "size": [
         "Slide", "Small", "Medium", "Large", "X-Large"
-    },
-    "price": {
+    ],
+    "price": [
         "3.50", "7.00", "10.00", "15.00", "20.00"
-    },
+    ],
     "store_hours": {
         "Mon": "10am-10pm",
         "Tue": "10am-10pm",
@@ -60,20 +60,20 @@ _Response_
 {
     "menu_id": "xxxxxxxxx",
     "store_name": "Pizza Hut",
-    "selection": { 
+    "selection": [ 
         "Cheese",
-        "Pepperoni",
-    },
-    "size": {
+        "Pepperoni"
+    ],
+    "size": [
         "Slide", "Small", "Medium", "Large", "X-Large"
-    },
-    "sequence": {
+    ],
+    "sequence": [
         "selection",
         "size"
-    },
-    "price": {
+    ],
+    "price": [
         "3.50", "7.00", "10.00", "15.00", "20.00"
-    },
+    ],
     "store_hours": {
         "Mon": "10am-10pm",
         "Tue": "10am-10pm",
