@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+message Data {
+  map<string, string> entry = 1;
+}
+
+message PutRequest {
+    Data data = 1;
+}
+
+message PutResponse {
+    string id = 1;
+}
+
+message GetRequest {
+    string id = 1;
+}
+
+message GetResponse {
+    Data data = 1;
+}
+
+message Empty {}
+
+message InfoResponse {
+    Data data = 1;
+}
+
+service DB {
+    rpc put(PutRequest) returns (PutResponse) {}
+    rpc get(GetRequest) returns (GetResponse) {}
+    rpc info(Empty) returns (InfoResponse) {}
+}
