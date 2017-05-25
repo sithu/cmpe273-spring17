@@ -1,7 +1,7 @@
 """
 You must use hashlib to hash the node ('0.0.0.0:3000') and key ('mykey') combination.
 Example: 
-node = '0.0.0.0:3000' + 'my-key'
+x = '0.0.0.0:3000' + 'my-key'
 x = node + key
 hash = hashlib.md5(x).hexdigest()
 
