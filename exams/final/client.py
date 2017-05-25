@@ -18,12 +18,12 @@ class DBClient(object):
         return self.stub.info(db_pb2.Empty())
 
 
-    def put(self, kv):
-        _data = db_pb2.Data(entry=kv)
-        req = db_pb2.PutRequest(data=_data)
+    def put(self, key, dataMap):
+        _data = db_pb2.Data(entry=dataMap)
+        req = db_pb2.PutRequest(id=key, data=_data)
         return self.stub.put(req)
 
 
-    def get(self, _id):
-        req = db_pb2.GetRequest(id=_id)
+    def get(self, key):
+        req = db_pb2.GetRequest(id=key)
         return self.stub.get(req)

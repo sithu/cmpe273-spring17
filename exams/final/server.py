@@ -8,6 +8,7 @@ import grpc
 import db_pb2
 import db_pb2_grpc
 import uuid
+import sys
 
 from concurrent import futures
 
@@ -27,8 +28,8 @@ class DBServicer(db_pb2.DBServicer):
 
 
     def put(self, request, context):
-        print "Saving data into the DB...\n", request.data
-        key = uuid.uuid4().hex
+        print "Saving data into the DB, key=%s\n%s" % (request.id, request.data)
+        key = request.id
         value = request.data
         self.map[key] = value
         return db_pb2.PutResponse(id=key)
@@ -58,4 +59,9 @@ def forever(servers):
 
 
 if __name__ == '__main__':
-    forever([run('0.0.0.0', 3000)])
+    total = len(sys.argv)
+    if total < 2:
+        print "Usage:$ python %s {SERVER1_PORT} {SERVER2_PORT} {SERVER3_PORT}..." % __file__
+        sys.exit(0)
+    
+    forever([run('0.0.0.0', int(port)) for port in sys.argv[1:]])

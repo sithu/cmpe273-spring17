@@ -14,11 +14,12 @@ class DBCheck(object):
     def put(self):
         print "########## Put ###########"
         user = {
-            'name': 'Foo Bar',
-            'email': 'foo_bar@gmail.com'
+            'name': 'Foo Bar - 1',
+            'email': 'foobar-1@gmail.com'
         }
-        print "Put Request:\n", user
-        resp = self.client.put(user)
+        key = 'foobar-1@gmail.com'
+        print "Put Request:\n", key, user
+        resp = self.client.put(key, user)
         print "Put Response:\n%s" % resp
         return resp.id
         
@@ -38,7 +39,7 @@ class DBCheck(object):
 if __name__ == '__main__':
     total = len(sys.argv)
     if total < 2:
-        print "Usage: python check_pre_req.py {SERVER_PORT}"
+        print "Usage: python %s {SERVER_PORT}" % __file__
         sys.exit(0)
 
     port = int(sys.argv[1])

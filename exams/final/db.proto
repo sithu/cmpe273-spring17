@@ -5,7 +5,8 @@ message Data {
 }
 
 message PutRequest {
-    Data data = 1;
+    string id = 1;
+    Data data = 2;
 }
 
 message PutResponse {
